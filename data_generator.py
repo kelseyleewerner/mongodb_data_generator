@@ -13,12 +13,12 @@ data_set = []
 for x in range(1, data_set_size):
     if data_set_option == "test":
         item = {
-            "count_test": x,
+            "countTest": x,
             "color": fake.color_name()
         }
     else:
         item = {
-            "count_demo": x,
+            "countDemo": x,
             "person": fake.name()
         }
     data_set.append(item)
