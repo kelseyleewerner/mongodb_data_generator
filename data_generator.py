@@ -1,17 +1,20 @@
+import argparse
 from faker import Faker
 import json
 # import pprint
-import sys
+
+parser = argparse.ArgumentParser(description="Process data set generator parameters")
 
 # Options for data_set_size are "test" or "demo"
-data_set_option = sys.argv[1]
-data_set_size = int(sys.argv[2]) + 1
+parser.add_argument('data_set_option')
+parser.add_argument('data_set_size', type=int)
+args = parser.parse_args()
 
 fake = Faker()
 data_set = []
 
-for x in range(1, data_set_size):
-    if data_set_option == "test":
+for x in range(1, args.data_set_size + 1):
+    if args.data_set_option == "test":
         item = {
             "countTest": x,
             "color": fake.color_name()
@@ -23,8 +26,9 @@ for x in range(1, data_set_size):
         }
     data_set.append(item)
 
+# Leaving this code in case of debugging needs
 # pp = pprint.PrettyPrinter()
 # pp.pprint(data_set)
 
-with open(F"{data_set_option}_data.json", "w") as outfile:
+with open(F"{args.data_set_option}_data.json", "w") as outfile:
     json.dump(data_set, outfile)
