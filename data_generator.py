@@ -33,7 +33,7 @@ for x in range(1, args.data_set_size + 1):
 with open(F"{args.data_set_option}_data.json", "w") as outfile:
     json.dump(data_set, outfile)
 
-with open(F"pretty_{args.data_set_option}_data.json", "w") as outfile:
+with open(F"pretty_{args.data_set_option}_data.txt", "w") as outfile:
     for item in data_set:
         json.dump(item, outfile)
         outfile.write("\n")
